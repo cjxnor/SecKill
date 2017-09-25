@@ -37,6 +37,7 @@
                         <th>详情页</th>
                     </tr>
                     </thead>
+                    <%-- TODO 页面显示的时间有问题，多了 12 分钟，或者和数据库无关 --%>
                     <tbody>
                         <c:forEach items="${stockList}" var="stockList" varStatus="stockStatus">
                             <tr>

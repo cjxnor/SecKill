@@ -113,6 +113,7 @@ public class SecKillController {
     public SecKillResult<Long> getTime() {
 
         Date nowTime = new Date();
+        //返回时间的毫秒数
         return new SecKillResult(true,nowTime.getTime());
     }
 }
