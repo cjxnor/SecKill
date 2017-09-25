@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--一个命名空间代表一个DAO-->
+<!--使用接口编程，namespace是一个接口的全类名-->
+<mapper namespace="com.cjx.spring.dao.StockDao">
+
+  <resultMap type="com.cjx.spring.entity.Stock" id="StockResult">
+    <!--  主键使用id标签  -->
+    <id column="sk_id" jdbcType="BIGINT" property="skId"/>
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="number" jdbcType="INTEGER" property="number"/>
+    <result column="start_time" jdbcType="DATE" property="startTime"/>
+    <result column="end_time" jdbcType="DATE" property="endTime"/>
+    <result column="create_time" jdbcType="DATE" property="createTime"/>
+  </resultMap>
+
+  <update id="reduceNumber">
+    UPDATE stock SET number = number - 1
+    WHERE sk_id = #{skId}
+    AND start_time <![CDATA[ <= ]]> #{killTime}
+    AND end_time >= #{killTime}
+    AND number > 0
+  </update>
+
+  <select id="queryById" parameterType="long" resultMap="StockResult">
+    SELECT sk_id,name,number,start_time,end_time,create_time
+    FROM stock WHERE sk_id = #{_parameter}
+  </select>
+
+  <select id="queryAll" resultMap="StockResult">
+    SELECT sk_id,name,number,start_time,end_time,create_time
+    FROM stock ORDER BY sk_id limit #{offset},#{limit}
+  </select>
+
+</mapper>
+

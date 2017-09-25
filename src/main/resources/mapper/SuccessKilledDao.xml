@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--一个命名空间代表一个DAO-->
+<!--使用接口编程，namespace是一个接口的全类名-->
+<mapper namespace="com.cjx.spring.dao.SuccessKilledDao">
+
+  <resultMap type="com.cjx.spring.entity.SuccessKilled" id="SuccessResult">
+    <!--  主键使用id标签  -->
+    <id column="successId" jdbcType="BIGINT" property="skId"/>
+    <result column="user_phone" jdbcType="BIGINT" property="userPhone"/>
+    <result column="state" jdbcType="SMALLINT" property="state"/>
+    <result column="successTime" jdbcType="DATE" property="createTime"/>
+    <collection property="stock" resultMap="com.cjx.spring.dao.StockDao.StockResult"/>
+  </resultMap>
+
+    <!-- 当插入了相同主键的数据后，会报主键冲突异常，使用 ignore 可忽略重复数据 -->
+    <insert id="insertSuccessKilled">
+      INSERT ignore INTO success_killed (sk_id,user_phone,state)
+      VALUES (#{skId},#{userPhone},0)
+    </insert>
+
+    <select id="queryByIdWithStock" resultMap="SuccessResult">
+      SELECT sk.sk_id successId,sk.user_phone,sk.state,sk.create_time successTime,
+      s.sk_id,s.name,s.number,s.start_time,s.end_time,s.create_time
+      FROM success_killed sk LEFT JOIN stock s ON sk.sk_id = s.sk_id
+      WHERE sk.sk_id = #{skId} AND sk.user_phone = #{userPhone}
+    </select>
+
+</mapper>
+

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+  <settings>
+    <!-- 使用 jdbc 的 getGeneratedKeys 获取数据的自增主键 -->
+    <setting name="useGeneratedKeys" value="true"/>
+    <!-- 使用列别名替换列名 -->
+    <setting name="useColumnLabel" value="true"/>
+    <!-- 开启驼峰命名转换 -->
+    <setting name="mapUnderscoreToCamelCase" value="true"/>
+  </settings>
+  <!--
+  <typeAliases>
+    <typeAlias alias="UserAlias" type="org.apache.ibatis.submitted.complex_property.User"/>
+  </type
+Aliases>
+  -->
+
+  <!--
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC">
+        <property name="" value=""/>
+      </transactionManager>
+      <dataSource type="UNPOOLED">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/seckill"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+      </dataSource>
+    </environment>
+  </environments>
+  -->
+
+  <!--<mappers>-->
+    <!--<mapper resource="config/sqlxml/Messages.xml"/>-->
+    <!--&lt;!&ndash; 下面是一个使用接口编程的映射文件 &ndash;&gt;-->
+    <!--<mapper resource="sqlxml/StockMapper.xml"></mapper>-->
+  <!--</mappers>-->
+
+
+</configuration>
