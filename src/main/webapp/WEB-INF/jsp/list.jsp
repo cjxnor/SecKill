@@ -37,20 +37,21 @@
                         <th>详情页</th>
                     </tr>
                     </thead>
-                    <%-- TODO 页面显示的时间有问题，多了 12 分钟，或者和数据库无关 --%>
+                    <%-- TODO fmt 使用 pattern="" 时，页面显示的时间有问题，多了 12 分钟，或者和数据库无关 --%>
                     <tbody>
                         <c:forEach items="${stockList}" var="stockList" varStatus="stockStatus">
                             <tr>
                                 <td>${stockList.name}</td>
                                 <td>${stockList.number}</td>
                                 <td>
-                                    <fmt:formatDate value="${stockList.startTime}" pattern="yyyy-MM-dd HH:hh:mm"/>
+                                    <fmt:formatDate value="${stockList.startTime}" type="both"/>
+                                    <%--<fmt:formatDate value="${stockList.startTime}" pattern="yyyy-MM-dd HH:hh:mm"/>--%>
                                 </td>
                                 <td>
-                                    <fmt:formatDate value="${stockList.endTime}" pattern="yyyy-MM-dd HH:hh:mm"/>
+                                    <fmt:formatDate value="${stockList.endTime}" type="both"/>
                                 </td>
                                 <td>
-                                    <fmt:formatDate value="${stockList.createTime}" pattern="yyyy-MM-dd HH:hh:mm"/>
+                                    <fmt:formatDate value="${stockList.createTime}" type="both"/>
                                 </td>
                                 <td>
                                     <a class="btn btn-info" href="/seckill/${stockList.skId}/detail" target="_blank">详情</a>

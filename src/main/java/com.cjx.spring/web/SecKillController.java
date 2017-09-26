@@ -94,16 +94,16 @@ public class SecKillController {
         } catch (RepeatKillException e1) {
             //重复秒杀异常
             SecKillExecution secKillExecution = new SecKillExecution(skId, SecKillStateEnum.REPEAT_KILL);
-            return new SecKillResult<SecKillExecution>(false, secKillExecution);
+            return new SecKillResult<SecKillExecution>(true, secKillExecution);
         } catch (SecKillCloseException e2) {
             //秒杀关闭或未开启
             SecKillExecution secKillExecution = new SecKillExecution(skId, SecKillStateEnum.END);
-            return new SecKillResult<SecKillExecution>(false, secKillExecution);
+            return new SecKillResult<SecKillExecution>(true, secKillExecution);
         } catch (Exception e) {
             //其他可能出现的异常
             e.printStackTrace();
             SecKillExecution secKillExecution = new SecKillExecution(skId, SecKillStateEnum.INNER_ERROR);
-            return new SecKillResult<SecKillExecution>(false, secKillExecution);
+            return new SecKillResult<SecKillExecution>(true, secKillExecution);
         }
     }
 
