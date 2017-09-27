@@ -114,6 +114,7 @@ var secKill = {
                     //当按下 escape 键时关闭模态框，设置为 false 时则按键无效
                     keyboard: false
                 });
+
                 //为按钮绑定事件
                 jQuery("#userPhoneBtn").click(function () {
                     var inputUserPhone = jQuery("#userPhone").val();
@@ -133,12 +134,13 @@ var secKill = {
                     }
                 });
             }
+
             //已经登录，计时交互
             var skId = params['skId'];
             //时间传过来的是毫秒时间
             var startTime = params['startTime'];
             var endTime = params['endTime'];
-            //返回的 result 时封装的 SecKillResult 类型
+            //返回的 result 是封装的 SecKillResult 类型
             //单独在从 SecKillController 中获取系统时间，是为了确保用户不停刷新 detail.jsp 是得到系统时间
             jQuery.get(secKill.URL.nowTimeUrl(), {}, function (result) {
                 //判断返回结果的状态

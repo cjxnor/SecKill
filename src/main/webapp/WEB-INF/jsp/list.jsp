@@ -44,6 +44,7 @@
                                 <td>${stockList.name}</td>
                                 <td>${stockList.number}</td>
                                 <td>
+                                    <%-- value 中传入的是一个 java Date 对象 --%>
                                     <fmt:formatDate value="${stockList.startTime}" type="both"/>
                                     <%--<fmt:formatDate value="${stockList.startTime}" pattern="yyyy-MM-dd HH:hh:mm"/>--%>
                                 </td>
